@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Spring security 6 demo
+  main:
+    banner-mode: off
+  security:
+    user:
+      name: the
+      password: Natty2111@
+server:
+  port: 8999
+
+terry:
+  authorization:
+    configuration:
+      default: false # enable for Basic authentication filter.
+      jwt: true # enable/disable for JWT Web token authentication filter.
+      secret: "dGVycnlAIykoJCpAIykkKilAIyoka2FzbGRqZmw7YWpzZGZsO2phc2RmbDtqYXNkZjI5MzA0ODIzMDQ4c2RsZmphcztsZGZq"
+#debug: true
+#logging.level.springframework: DEBUG
+#logging.level.com.terry.security.demo: DEBUG
