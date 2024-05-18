@@ -20,7 +20,7 @@ public class JwtTokenService {
 	public String generate(User user) {
 		final long expiration = 3_600_000;
 		return Jwts.builder()
-				.setSubject(user.name())
+				.setSubject(user.username())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + expiration))
 				.signWith(Keys.hmacShaKeyFor(Base64.getDecoder().decode(secret)), SignatureAlgorithm.HS256)

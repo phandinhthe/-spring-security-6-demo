@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -36,14 +37,14 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 		if (!jwtTokenService.isValid(jwtToken)) {
 			throw new RuntimeException("Token is invalid");
 		}
-		String name = jwtTokenService.subject(jwtToken);
-		User user = userDetailService.user(name);
+		String username = jwtTokenService.subject(jwtToken);
+		UserDetails user = userDetailService.loadUserByUsername(username);
 		if (null == user) {
-			throw new RuntimeException(String.format("User %s doesn't exist.", name));
+			throw new RuntimeException(String.format("User %s doesn't exist.", username));
 		}
 
 		SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
-				name, null, Collections.emptyList()
+				username, user.getPassword(), user.getAuthorities()
 		));
 		filterChain.doFilter(request, response);
 	}
