@@ -13,9 +13,15 @@ import java.util.Collection;
 @RequestMapping("/api/v1")
 public class UserController {
 
+	private final UserDetailService userDetailService;
+
+	public UserController(UserDetailService userDetailService) {
+		this.userDetailService = userDetailService;
+	}
+
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/user-management/users")
 	public Collection<User> users() {
-		return UserDetailService.users;
+		return userDetailService.users();
 	}
 }

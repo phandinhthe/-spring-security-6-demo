@@ -1,16 +1,21 @@
 package com.terry.security.demo.springsecurity6demo.user.entity;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
+import com.terry.security.demo.springsecurity6demo.configuration.StringListConverter;
+import jakarta.persistence.Convert;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import java.util.Collection;
 import java.util.stream.Stream;
 
 @JsonDeserialize(builder = User.Builder.class)
+@Entity
 public class User {
 	@JsonProperty
+	@Id
 	private int id;
 	@JsonProperty
 	private String name;
@@ -20,8 +25,10 @@ public class User {
 	private String username;
 	@JsonProperty
 	private String password;
+	@Convert(converter = StringListConverter.class)
 	private Collection<String> authorities;
 
+	public User() {}
 	public User(int id, String name, String mailAddress, String username, String password, Collection<String> authorities) {
 		this.id = id;
 		this.name = name;

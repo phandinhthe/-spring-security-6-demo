@@ -7,6 +7,19 @@ spring:
     user:
       name: the
       password: Natty2111@
+  docker:
+    compose:
+      lifecycle-management: start-only
+  jpa:
+    database: mysql
+  datasource:
+    url: jdbc:mysql://localhost:13306/spring_security
+    username: admin
+    password: password
+    jpa:
+      show-sql: true
+    hibernate:
+      ddl-auto: none
 server:
   port: 8999
 
