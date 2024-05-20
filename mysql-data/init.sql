@@ -9,3 +9,11 @@ create table `user` (
   primary key(`id`)
 );
 
+insert into `user`
+  (`name`, `password`, `username`, `mail_address`, `authorities`)
+values
+  ("terry","123","phandinhthe","phandinhthe1991@gmail.com","ADMIN"),
+	("the","123","terry_phan1991","terry_phan1991@gmail.com","ADMIN"),
+	("phan","123","trn.frank2802","trn.frank2802@gmail.com","ADMIN"),
+	("trn","123","trn","trn.frank2802@yahoo.com","GUEST");
+

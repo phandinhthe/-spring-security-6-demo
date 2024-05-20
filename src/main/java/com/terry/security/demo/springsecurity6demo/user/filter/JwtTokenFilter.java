@@ -1,6 +1,5 @@
 package com.terry.security.demo.springsecurity6demo.user.filter;
 
-import com.terry.security.demo.springsecurity6demo.user.entity.User;
 import com.terry.security.demo.springsecurity6demo.user.service.JwtTokenService;
 import com.terry.security.demo.springsecurity6demo.user.service.UserDetailService;
 import jakarta.servlet.FilterChain;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.Collections;
 
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
