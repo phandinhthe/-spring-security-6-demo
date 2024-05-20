@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -26,7 +27,7 @@ public class SecurityConfig {
 	}
 
 	@Autowired
-	JwtTokenFilter filter;
+	private JwtTokenFilter filter;
 
 	@ConditionalOnProperty(name = "terry.authorization.configuration.jwt", havingValue = "true")
 	@Bean
